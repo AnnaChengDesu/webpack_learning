@@ -1,4 +1,4 @@
-export const test = {
+export default {
     a:1,
     b:2
 }

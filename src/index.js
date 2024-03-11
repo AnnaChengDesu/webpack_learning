@@ -1,6 +1,7 @@
 import test from "./a"
-import bTest from "./b"
 
-console.log(test.a)
-
-console.log(bTest.c)    
+(() => {
+    let d = 4
+    console.log(d)
+    console.log(test.a)
+})()
