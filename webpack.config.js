@@ -58,6 +58,10 @@ module.exports = {
         generator: {
           filename: '[name].[hash:4].[ext]'
         }
+      },
+      {
+        test: /\.(tsx|ts)$/,
+        use: 'ts-loader'
       }
     ]
   },
