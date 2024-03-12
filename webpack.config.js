@@ -7,8 +7,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   mode: 'production', // "production" \ "development" \ "none"
   entry: {
-    app: './src/index.js',
-    app2: './src/index2.js'
+    app: './src/index.js'
+    // app2: './src/index2.js'
   },
   output: {
     filename: '[name].[hash:4].bundle.js',
@@ -76,13 +76,22 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: 'index1.html',
-      chunks: ['app']
-    }),
-    new HtmlWebpackPlugin({
-      template: './src/index2.html',
-      filename: 'index2.html',
-      chunks: ['app2']
+      chunks: ['app'],
+      title: 'hhhh',
+      // html压缩配置
+      minify: {
+        collapseWhitespace: false,
+        removeAttributeQuotes: false,
+        removeComments: false
+      },
+      // js插入的位置
+      inject: 'body' // "head"
     })
+    // new HtmlWebpackPlugin({
+    //   template: './src/index2.html',
+    //   filename: 'index2.html',
+    //   chunks: ['app2']
+    // })
   ],
   optimization: {}
 }
