@@ -1,7 +1,7 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2022: true
   },
   extends: [
     'standard',
@@ -11,7 +11,7 @@ module.exports = {
     'vue'
   ],
   parserOptions: {
-    ecmaVersion: 6,
+    ecmaVersion: 2022,
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true
