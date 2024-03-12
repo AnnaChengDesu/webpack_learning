@@ -36,6 +36,28 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [Minicss.loader, 'css-loader', 'sass-loader']
+      },
+      // webpack 3\4 需要安装 file-loader url-loader
+      // {
+      //   test: /\.(jpg|jpeg|png|gif|svg)$/,
+      //   loader: 'url-loader',
+      //   options: {
+      //     limit: 5000,
+      //     name: '[name].[hash:4].[ext]'
+      //   }
+      // },
+      // webpack 5 处理原生webpack处理
+      {
+        test: /\.(jpg|png|gif|svg)$/,
+        type: 'asset', // asset / asset-inline / resource
+        parser: {
+          dataUrlCondition: {
+            maxSize: 5000
+          }
+        },
+        generator: {
+          filename: '[name].[hash:4].[ext]'
+        }
       }
     ]
   },
