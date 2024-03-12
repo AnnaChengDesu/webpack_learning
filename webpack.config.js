@@ -2,6 +2,7 @@ const EslintPlugin = require('eslint-webpack-plugin')
 const path = require('path')
 const Minicss = require('mini-css-extract-plugin')
 const MinimizerCss = require('css-minimizer-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'production', // "production" \ "development" \ "none"
@@ -70,7 +71,11 @@ module.exports = {
     new Minicss({
       filename: 'test.bundle.css'
     }),
-    new MinimizerCss()
+    new MinimizerCss(),
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      filename: 'index1.html'
+    })
   ],
   optimization: {}
 }
