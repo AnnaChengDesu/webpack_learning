@@ -5,7 +5,7 @@ const MinimizerCss = require('css-minimizer-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  mode: 'production', // "production" \ "development" \ "none"
+  mode: 'development', // "production" \ "development" \ "none"
   entry: {
     app: './src/index.js'
     // app2: './src/index2.js'
@@ -93,5 +93,28 @@ module.exports = {
     //   chunks: ['app2']
     // })
   ],
-  optimization: {}
+  optimization: {
+    // 第三方库和公共模块分开打包
+    splitChunks: {
+      chunks: 'all', // all async initial
+      cacheGroups: {
+        vender: {
+          test: /[\\/]node_modules[\\/]/,
+          filename: 'vender.js',
+          chunks: 'all',
+          minChunks: 1 // 代码被多文件引用的最小次数
+        },
+        common: {
+          filename: 'common.js',
+          chunks: 'all',
+          minChunks: 2, // 最小公用次数
+          minSize: 0
+        }
+      }
+    },
+    // 运行时代码模块分割
+    runtimeChunk: {
+      name: entrypoint => `runtime-${entrypoint.name}`
+    }
+  }
 }
