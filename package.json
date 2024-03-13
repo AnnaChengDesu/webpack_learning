@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack",
-    "server": "webpack-dev-server"
+    "dev": "webpack --config ./webpack.devconfig.js",
+    "build": "webpack --config ./webpack.proconfig.js",
+    "server": "webpack-dev-server --config ./webpack.devconfig.js"
   },
   "keywords": [],
   "author": "",
@@ -30,6 +31,7 @@
     "typescript": "^5.4.2",
     "webpack": "^5.90.3",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.0.2"
+    "webpack-dev-server": "^5.0.2",
+    "webpack-merge": "^5.10.0"
   }
 }
