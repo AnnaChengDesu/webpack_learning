@@ -1,5 +1,5 @@
 // import test from './a'
-// import './a.css'
+import '@/a'
 // import './b.scss'
 // import './c.ts'
 

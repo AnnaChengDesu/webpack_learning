@@ -11,12 +11,24 @@ module.exports = {
     // app2: './src/index2.js'
   },
   output: {
+    // hash 任意模块变化每次打包都会更新
+    // chunkhash 模块发生变化仅对应模块hash更新，充分利用浏览器缓存和编译缓存
     filename: '[name].[hash:4].bundle.js',
     path: path.join(__dirname, '/dist')
+    // 资源放置在 CDN 上
+    // publicPath: 'www.xxx.com'
   },
   devServer: {
     compress: true,
     port: 9000
+  },
+  resolve: {
+    // 别名，提供路径的简写
+    alias: {
+      '@': path.join(__dirname, '/src')
+    },
+    // 扩展省略
+    extensions: ['.js', '.css', '.json']
   },
   module: {
     rules: [
@@ -94,6 +106,8 @@ module.exports = {
     // })
   ],
   optimization: {
+    // 单入口 => runtime + vender + 核心业务 + 异步模块
+    // 多入口 => runtime + vender + 每个入口的核心业务代码 + common
     // 第三方库和公共模块分开打包
     splitChunks: {
       chunks: 'all', // all async initial
